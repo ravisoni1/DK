@@ -1,0 +1,180 @@
+*************************************GIT**********************************
+
+	Lecture first
+
+[root@soni ~]# yum install git
+[root@soni ~]# mkdir /GIT
+[root@soni ~]# Cd /GIT
+[root@soni GIT]# git init
+[root@soni GIT]# ls -al
+total 4
+drwxr-xr-x   3 root root   18 Apr  4 20:32 .
+dr-xr-xr-x. 26 root root 4096 Apr  4 20:28 ..
+drwxr-xr-x   7 root root  119 Apr  4 20:32 .git
+
+[root@soni GIT]# cd .git
+[root@soni .git]# ls
+branches  config  description  HEAD  hooks  info  objects  refs
+[root@soni GIT]# vim first.txt
+[root@soni GIT]# cat first.txt 
+Hello world this is my first commit
+
+[root@soni GIT]# git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	first.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+[root@soni GIT]# git add .
+[root@soni GIT]# git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   first.txt
+
+[root@soni GIT]# git commit -m "my first commit " .
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'root@soni.(none)')
+
+(##### Resolve above problem create a account on github######)
+(### user name : ravisoni)
+(### passwd	--------)
+(### email id :- ravisoni2861994@gmail.com)
+
+[root@soni GIT]# git config --global user.email "ravisoni2861994@gmail.com"
+[root@soni GIT]# git config --global user.name "ravisoni1"
+[root@soni GIT]# git commit -m "my first commit" .
+
+[master (root-commit) c646a3a] my first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 first.txt
+[root@soni GIT]# git log
+commit c646a3ae7337d0fd3af58aab509b407a4e5411db (HEAD -> master)
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:45:47 2023 +0530
+    my first commit
+
+
+[root@soni GIT]# vim second.txt
+[root@soni GIT]# cat second.txt 
+my second commit
+
+[root@soni GIT]# git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	second.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+[root@soni GIT]# git add .
+[root@soni GIT]# ls
+first.txt  second.txt
+
+[root@soni GIT]# git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   second.txt
+
+[root@soni GIT]# git commit -m "my second commit"
+[master 0453050] my second commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 second.txt
+
+[root@soni GIT]# git log
+commit 0453050589a9e4ce4de1f3e820328ac8bd0b927d (HEAD -> master)
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:57:08 2023 +0530
+
+    my second commit
+
+commit c646a3ae7337d0fd3af58aab509b407a4e5411db
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:45:47 2023 +0530
+
+my first commit
+
+[root@soni GIT]# ls
+first.txt  react-file-viewer  second.txt
+[root@soni GIT]# git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	react-file-viewer/
+
+nothing added to commit but untracked files present (use "git add" to track)
+[root@soni GIT]# git add react-file-viewer/
+warning: adding embedded git repository: react-file-viewer
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> react-file-viewer
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached react-file-viewer
+hint: 
+hint: See "git help submodule" for more information.
+[root@soni GIT]# git log
+commit 0453050589a9e4ce4de1f3e820328ac8bd0b927d (HEAD -> master)
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:57:08 2023 +0530
+
+    my second commit
+
+commit c646a3ae7337d0fd3af58aab509b407a4e5411db
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:45:47 2023 +0530
+
+    my first commit
+[root@soni GIT]# git commit -m "my first clone" .
+[master 62e6776] my first clone
+ 1 file changed, 1 insertion(+)
+ create mode 160000 react-file-viewer
+[root@soni GIT]# git log
+commit 62e6776d435accf7b3099a3a39cdc81b37b3bb86 (HEAD -> master)
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 21:07:58 2023 +0530
+
+    my first clone
+
+commit 0453050589a9e4ce4de1f3e820328ac8bd0b927d
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:57:08 2023 +0530
+
+    my second commit
+
+commit c646a3ae7337d0fd3af58aab509b407a4e5411db
+Author: ravisoni1 <ravisoni2861994@gmail.com>
+Date:   Tue Apr 4 20:45:47 2023 +0530
+
+    my first commit
+
+
+
+
+
+
+
